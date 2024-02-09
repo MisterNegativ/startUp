@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+    <!-- Вывод рекламы -->
+    {% for advertisement in advertisements %}
+        <div>
+            <h2>{{ advertisement.title }}</h2>
+            <p>{{ advertisement.content }}</p>
+            {% if advertisement.image %}
+                <img src="{{ advertisement.image }}" alt="{{ advertisement.title }}">
+            {% endif %}
+
+            <!-- Вывод видео, если оно существует -->
+            {% if advertisement.video_url %}
+                <iframe width="560" height="315" src="{{ advertisement.video_url }}" frameborder="0" allowfullscreen></iframe>
+            {% endif %}
+        </div>
+    {% endfor %}
+    
+</body>
+</html>
