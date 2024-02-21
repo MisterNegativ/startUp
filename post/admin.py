@@ -8,12 +8,11 @@ class AdvertisementAdmin(admin.ModelAdmin):
 
     def save_model(self, request, obj, form, change):
         # Clear the selected regions when adding a new Advertisement
-        if not change:  # If it's a new Advertisement
+        if not change and obj.id:  # If it's a new Advertisement and has been saved
             obj.regions.clear()
 
         # Save the Advertisement object
         super().save_model(request, obj, form, change)
-
 
 admin.site.register(FilterRegion)
 admin.site.register(Advertisement, AdvertisementAdmin)
